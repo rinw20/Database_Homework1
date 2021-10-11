@@ -1,0 +1,1 @@
+select ProductName, CompanyName, ContactName from Product inner join OrderDetail on Product.Id = OrderDetail.ProductId inner join [Order] on OrderDetail.OrderId = [Order].Id inner join Customer on [Order].CustomerId = Customer.Id where Product.Id in (select Id from Product where Discontinued = 1) group by ProductName having min(OrderDate);

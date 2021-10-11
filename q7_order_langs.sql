@@ -1,0 +1,1 @@
+select *, round(JulianDay(current) - JulianDay(last), 2) from (select Id, OrderDate as current, LAG(OrderDate, 1, OrderDate) OVER(order by OrderDate) as last from [Order] where CustomerId = "BLONP" order by OrderDate asc limit 10);
